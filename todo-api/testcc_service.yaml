@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2022-12-27T09:15:58Z"
+  labels:
+    app: tododb
+  name: tododb
+  namespace: developer-todo-migrate
+  uid: 22af5b81-94f7-4ebb-a9ff-e627499b0166
+spec:
+  externalName: mysql.ocp-eu46a.prod.ole.redhat.com
+  internalTrafficPolicy: Cluster
+  ports:
+  - name: 3306-3306
+    port: 3306
+    protocol: TCP
+    targetPort: 3306
+  selector:
+    app: tododb
+  sessionAffinity: None
+  type: ExternalName
+status:
+  loadBalancer: {}
