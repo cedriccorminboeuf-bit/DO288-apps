@@ -6,7 +6,7 @@ LABEL description="To Do List application builder"
 # ENV REACT_APP_API_HOST=http://localhost:3000
 ENV REACT_APP_API_HOST=""
 
-USER 0
+USER nginx
 
 COPY . /tmp/todo-frontend
 
@@ -24,5 +24,7 @@ LABEL updatedDate="2021-05-19"
 
 COPY nginx.conf /etc/nginx/
 COPY --from=appbuild /tmp/todo-frontend/build /usr/share/nginx/html
+
+EXPOSE 8080
 
 CMD nginx -g "daemon off;"
